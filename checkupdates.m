@@ -10,6 +10,12 @@ if nargin==1
     
 end
 
+if strcmp(mfilename,'checkupdates')
+   try
+    copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f')
+   end  
+    temp_checkupdates
+end
 
 initialize();
 mkgui();
