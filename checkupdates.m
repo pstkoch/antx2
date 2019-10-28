@@ -1,5 +1,5 @@
 
-%CHECK-2
+%CHECK-3
 function checkupdates(varargin)
 
 if nargin==1
@@ -13,7 +13,8 @@ end
 if strcmp(mfilename,'checkupdates')
    try
     copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f')
-   end  
+  %try; delete(which('checkupdates.m')); end
+  end  
     temp_checkupdates
     return
 end
