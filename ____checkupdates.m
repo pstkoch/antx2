@@ -1,5 +1,5 @@
 
-%CHECK-2
+%CHECK
 function checkupdates(varargin)
 
 if nargin==1
@@ -15,7 +15,6 @@ if strcmp(mfilename,'checkupdates')
     copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f')
    end  
     temp_checkupdates
-    return
 end
 
 initialize();
@@ -227,8 +226,7 @@ function mkgui()
 % global antpd
 try;  delete(findobj(0,'tag','fupd')); end
 figure; set(gcf,'color','w','units','normalized','menubar','none',...
-    'position',[0.3750    0.3544    0.2896    0.2289],'tag','fupd',...
-    'name', [mfilename]);
+    'position',[0.3750    0.3544    0.2896    0.2289],'tag','fupd');
 
 hp=uicontrol('style','text','units','norm','string','status: --','fontsize',9)
 set(hp,'position',[.01 0.6 .4 .07],'tag','msg','foregroundcolor',[.4 .4 .4],'backgroundcolor',[1 1 1]);
