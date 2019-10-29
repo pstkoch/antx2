@@ -43,18 +43,16 @@ LINK: https://github.com/pstkoch/antx2
    ..this is easier to obtain the respective template 
 - copy unzipped template folder to "anttemplates" dir
 
------------------------------------------------
-OPTION-B : just download no update option 
-           ADVANTAGE: more simple installation
------------------------------------------------
+## [OPTION-B] just download via clone-button
+ADVANTAGE  : more simple installation
+DIADVANTAGE: n update feature
+
 - select [Clone & download button]
 - select [Download ZIP]
 - unzip folder & copy entire "antx2"-folder to desired location
 
-  *** start ant gui ***
-- set MATLAB's current working dir to "antx2" dir 
-- type antlink to link paths
-- type ant to open ant-gui  
+### <ins> IMPORTABT </ins> ###
+for how to "Start Ant Gui" and "Download Templates" see above...
 
 
 =============================================
