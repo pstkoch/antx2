@@ -51,13 +51,12 @@ DIADVANTAGE: n update feature
 - select [Download ZIP]
 - unzip folder & copy entire "antx2"-folder to desired location
 
-### <ins> IMPORTABT </ins> ###
+### <ins> IMPORTANT </ins> ###
 for how to "Start Ant Gui" and "Download Templates" see above...
 
 
-=============================================
-Installation via googledrive (older versions):
-=============================================
+## [OPTION-C] Installation via googledrive
+DIADVANTAGE: older versions
 LINK: https://drive.google.com/drive/u/1/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM
 -	download and unzip the ANTX2-toolbox
 -	save the toolbox to your preferred drive/path
