@@ -1,6 +1,6 @@
 
 %CHECK-8
-function checkupdates(varargin)
+function installfromgithub(varargin)
 
 if nargin==1
     if strcmp(varargin{1},'install')
@@ -12,14 +12,14 @@ elseif nargin==0
     clear global antupd
 end
 
-if strcmp(mfilename,'checkupdates')
+if strcmp(mfilename,'installfromgithub')
     try
-        copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f');
+        copyfile(which('installfromgithub.m'), fullfile(fileparts(which('installfromgithub.m')),'temp_installfromgithub.m'),'f');
 %         global antupd;
-%         antupd.tempfile=fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m');
-        %try; delete(which('checkupdates.m')); end
+%         antupd.tempfile=fullfile(fileparts(which('installfromgithub.m')),'temp_installfromgithub.m');
+        %try; delete(which('installfromgithub.m')); end
     end
-    temp_checkupdates
+    temp_installfromgithub;
     return
 end
 
@@ -44,7 +44,7 @@ if isempty(antupd.patempup)
 end
 
 disp('hallo');
-disp(which('checkupdates.m'));
+disp(which('installfromgithub.m'));
 
 if exist(fullfile(antupd.patempup,'antx2'))==7
     disp('renaming');
@@ -64,31 +64,19 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
         drawnow;
         disp('..cloning repository from GITHUB..');
         git clone https://github.com/pstkoch/antx2
-        fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
+        %fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
         cd(fullfile(antupd.patempup,'antx2'));
     end
     
     if isfield(antupd, 'patempup')
-        if exist(fullfile(antupd.patempup,'checkupdates.m'))
-            disp('..deleting "checkupdates.m" from upper directory ');
-            try; delete(fullfile(antupd.patempup,'checkupdates.m'));   end
-            try; delete(fullfile(antupd.patempup,'temp_checkupdates.m'));   end  
+        if exist(fullfile(antupd.patempup,'installfromgithub.m'))
+            %disp('..deleting "installfromgithub.m" from upper directory ');
+            try; delete(fullfile(antupd.patempup,'installfromgithub.m'));   end
+            try; delete(fullfile(antupd.patempup,'temp_installfromgithub.m'));   end  
         end
     end
-    
-    
-    %     try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
-    %     try; disp(pwd);    end
-    %     drawnow
-    %      try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
-    %     try; disp(pwd);    end
-    
-    %     try
-    %     movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
-    %     catch
-    %       cd('..');
-    %         movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
-    %     end
+    try; fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);end
+
     
 else % no antx2-dir here
     if 1
@@ -98,25 +86,25 @@ else % no antx2-dir here
     end
     if 0 
         mkdir(fullfile(antupd.patempup,'antx2'))
-        copyfile(fullfile(antupd.patempup,'checkupdates.m'),fullfile(antupd.patempup,'antx2','checkupdates.m'),'f')
+        copyfile(fullfile(antupd.patempup,'installfromgithub.m'),fullfile(antupd.patempup,'antx2','installfromgithub.m'),'f')
     end
     cd(fullfile(antupd.patempup,'antx2'));
     
     if isfield(antupd, 'patempup')
-        if exist(fullfile(antupd.patempup,'checkupdates.m'))
-            disp('..deleting "checkupdates.m" from upper directory ');
-            try; delete(fullfile(antupd.patempup,'checkupdates.m'));   end
+        if exist(fullfile(antupd.patempup,'installfromgithub.m'))
+           % disp('..deleting "installfromgithub.m" from upper directory ');
+            try; delete(fullfile(antupd.patempup,'installfromgithub.m'));   end
         end
     end
-    try; delete(fullfile(antupd.patempup,'temp_checkupdates.m'));   end  
+    try; delete(fullfile(antupd.patempup,'temp_installfromgithub.m'));   end  
      try; delete(antupd.tempfile);   end  
-    
+     try; fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);end
 end
 
 
 
 setstatus(0);
-checkupdates;
+installfromgithub;
 
 
 end
@@ -137,11 +125,11 @@ function pbclose(e,e2)
 
 global antupd;
 cd(antupd.updatepath);
-tmpfile=fullfile(antupd.updatepath,'temp_checkupdates.m');
+tmpfile=fullfile(antupd.updatepath,'temp_installfromgithub.m');
 try; delete(tmpfile);
-    disp('.."temp_checkupdates.m" removed');
+    disp('.."temp_installfromgithub.m" removed');
 catch
-    disp('..could not delete "temp_checkupdates.m", please do it manually later');
+    disp('..could not delete "temp_installfromgithub.m", please do it manually later');
 end
 if ~isempty(antupd.antxpath); antlink(1);
     disp('..set antx2-path again');
@@ -157,11 +145,11 @@ disp('..back to original directory');
 delete(findobj(gcf,'tag','fupd')); %close WINDOW
 
 if isfield(antupd,'patempup')
-    if exist(fullfile(antupd.patempup,'checkupdates.m'))==2
-        delete(fullfile(antupd.patempup,'checkupdates.m'));
-        disp('..removed temporary "checkupdates"-file from upper dir');
+    if exist(fullfile(antupd.patempup,'installfromgithub.m'))==2
+        delete(fullfile(antupd.patempup,'installfromgithub.m'));
+        disp('..removed temporary "installfromgithub"-file from upper dir');
         
-        try; delete(fullfile(antupd.patempup,'temp_checkupdates.m'));   end  
+        try; delete(fullfile(antupd.patempup,'temp_installfromgithub.m'));   end  
         
     end
 end
@@ -169,13 +157,13 @@ try; delete(fullfile(antupd.tempfile));   end
 
 end
 
-function pbcheckupdatescall(e,e2,updatecode)
+function pbinstallfromgithubcall(e,e2,updatecode)
 
-pbcheckupdates(updatecode);
+pbinstallfromgithub(updatecode);
 
 end
 
-function pbcheckupdates(updatecode);
+function pbinstallfromgithub(updatecode);
 
 global antupd;
 atime=tic;
@@ -258,7 +246,7 @@ end
 if updatecode==4
     
      global antupd;
-     antupd.tempfile=which('temp_checkupdates.m');%fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m');
+     antupd.tempfile=which('temp_installfromgithub.m');%fullfile(fileparts(which('installfromgithub.m')),'temp_installfromgithub.m');
         
     
     pa=uigetdir(pwd,'select path to install "antx2"');
@@ -275,11 +263,11 @@ if updatecode==4
     antupd.patempup=patempup;
     cd(patempup);
     try
-        copyfile(fullfile(antupd.updatepath,'checkupdates.m'), fullfile(antupd.patempup,'checkupdates.m'),'f');
+        copyfile(fullfile(antupd.updatepath,'installfromgithub.m'), fullfile(antupd.patempup,'installfromgithub.m'),'f');
     end
     
-    disp([' Click hyperlink to install from GITHUB": <a href="matlab: cd(antupd.patempup);checkupdates(''install'');">install</a>']);
-    %     checkupdates('install');
+    disp([' Click hyperlink to install from GITHUB": <a href="matlab: cd(antupd.patempup);installfromgithub(''install'');">install</a>']);
+    %     installfromgithub('install');
     
     
     %     F:\github\fromGITHUB\antx2
@@ -353,18 +341,18 @@ set(hp,'horizontalalignment','left');
 setstatus(0);
 
 hp=uicontrol('style','pushbutton','units','norm','string','check for updates','fontsize',9);
-set(hp,'position',[.01 .5 .3 .1],'callback',{@pbcheckupdatescall,1});
+set(hp,'position',[.01 .5 .3 .1],'callback',{@pbinstallfromgithubcall,1});
 set(hp,'tooltipstring',['..checks for updates from repository only']);
 
 hp=uicontrol('style','pushbutton','units','norm','string','update without check','fontsize',9);
-set(hp,'position',[.01 .4 .3 .1],'callback',{@pbcheckupdatescall,2});
+set(hp,'position',[.01 .4 .3 .1],'callback',{@pbinstallfromgithubcall,2});
 set(hp,'tooltipstring',['..updates from repository without checking ' char(10) ...
     '        [duration]: fast (secs) ']);
 
 
 
 hp=uicontrol('style','pushbutton','units','norm','string','rebuild','fontsize',9);
-set(hp,'position',[.01 .3 .3 .1],'callback',{@pbcheckupdatescall,5});
+set(hp,'position',[.01 .3 .3 .1],'callback',{@pbinstallfromgithubcall,5});
 set(hp,'tooltipstring',['..rebuild toolbox' char(10) ...
     ' * USED WHEN: '                        char(10) ...
     '   - files are missing / not updated' char(10)' ...
@@ -373,7 +361,7 @@ set(hp,'tooltipstring',['..rebuild toolbox' char(10) ...
 
 
 hp=uicontrol('style','pushbutton','units','norm','string','fresh installation','fontsize',9);
-set(hp,'position',[.01 .2 .3 .1],'callback',{@pbcheckupdatescall,4},'foregroundcolor','r');
+set(hp,'position',[.01 .2 .3 .1],'callback',{@pbinstallfromgithubcall,4},'foregroundcolor','r');
 set(hp,'tooltipstring',['..make FRESH INSTALLATION' char(10) ...
     ' * USED WHEN: '                                char(10) ...
     '   - toolbox was never installed before'       char(10)' ...
