@@ -836,6 +836,9 @@ mh2 = uimenu(mh,'Label','ant-settings',                                         
 mh2 = uimenu(mh,'Label','version',                                                      'Callback',{@menubarCB, 'version'},'separator','on');
 mh2 = uimenu(mh,'Label','contact',                                                      'Callback',{@menubarCB, 'contact'});
 
+mh2 = uimenu(mh,'Label','check for updates (Github)',                                    'Callback',{@menubarCB, 'checkUpdateGithub'});
+
+
 %========================================================
 %% JAVA MENU
 %
@@ -1790,6 +1793,19 @@ elseif strcmp(task,'contact')
         cprintf(col,['philipp.boehm-sturm@charite.de\n']);
         cprintf(col,['**********   CONTACT     ******************\n']);
     end
+    
+elseif strcmp(task,'checkUpdateGithub')
+    if showhelpOnly==1;   %% HELP-PARSER: we need the TARGET-FUNCTION here
+        hlpfun={' check for updates/changes in GITHUB repository'};
+        hlpfun{end+1,1}=[' #g GITHUB repository link: '];
+        hlpfun{end+1,1}=['  https://github.com/pstkoch/antx2'];
+        hlpfun{end+1,1}=['   '];
+        hlpfun{end+1,1}=['  ..redirected help from #gy "installfromgithub.m" '];
+        hlpfun=[hlpfun; strsplit(help(which('installfromgithub.m')),char(10))'];
+        return ;
+    end
+    
+    installfromgithub
     
 end
 

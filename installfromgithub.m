@@ -1,5 +1,7 @@
 
-%CHECK-8
+% documentation here
+% some infos
+
 function installfromgithub(varargin)
 
 if nargin==1
