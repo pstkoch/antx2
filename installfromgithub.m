@@ -189,6 +189,7 @@ if updatecode==1 %check before
     if isempty(msg);
         disp('no changes/no updates');
          setstatus(1,'no updates found');
+         return
     else
         button = questdlg(['updates where found' char(10) 'Update toolbox now? '],'',...
             'YES, update now','Cancel','canel');
