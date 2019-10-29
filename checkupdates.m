@@ -1,5 +1,5 @@
 
-%CHECK-5
+%CHECK-6
 function checkupdates(varargin)
 
 if nargin==1
