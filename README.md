@@ -38,9 +38,10 @@ LINK: https://github.com/pstkoch/antx2
    LINK: https://drive.google.com/drive/folders/1q5XOOVLvUYLqYsQJLqNRF7OK8fNwYhI9
    or from subfolder "anttemplates" from LINK:
    https://drive.google.com/drive/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM 
- - unzip templates
+ - unzip downloaded template file
  - create folder "anttemplates" located at the same hierarchical level as antx2-folder is located
-   ..this is easier to obtain the respsective template 
+   ..this is easier to obtain the respective template 
+- copy unzipped template folder to "anttemplates" dir
 
 -----------------------------------------------
 OPTION-B : just download no update option 
