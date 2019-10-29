@@ -114,6 +114,15 @@ disp('..rehashed paths');
 cd(antupd.pwd);
 disp('..back to original directory'); 
 delete(findobj(gcf,'tag','fupd')); %close WINDOW
+
+if isfield(antupd,'patempup')
+    if exist(fullfile(antupd.patempup,'checkupdates.m'))==2
+        delete(fullfile(antupd.patempup,'checkupdates.m'));
+        disp('..removed temporary "checkupdates"-file from upper dir'); 
+    end
+end
+
+
 end
 
 function pbcheckupdatescall(e,e2,updatecode)
@@ -221,7 +230,7 @@ if updatecode==4
     copyfile(fullfile(antupd.updatepath,'checkupdates.m'), fullfile(antupd.patempup,'checkupdates.m'),'f');
     end    
     
-    disp([' image: <a href="matlab: cd(antupd.patempup);checkupdates(''install'');">install</a>']);
+    disp([' Click hyperlink to install ": <a href="matlab: cd(antupd.patempup);checkupdates(''install'');">install</a>']);
 %     checkupdates('install');
     
         
@@ -297,16 +306,34 @@ setstatus(0);
 
 hp=uicontrol('style','pushbutton','units','norm','string','check for updates','fontsize',9);
 set(hp,'position',[.01 .5 .3 .1],'callback',{@pbcheckupdatescall,1});
+set(hp,'tooltipstring',['..checks for updates from repository only']);
 
 hp=uicontrol('style','pushbutton','units','norm','string','update without check','fontsize',9);
 set(hp,'position',[.01 .4 .3 .1],'callback',{@pbcheckupdatescall,2});
+set(hp,'tooltipstring',['..updates from repository without checking ' char(10) ...
+   '      - duration: fast (secs) ']);
+
 
 
 hp=uicontrol('style','pushbutton','units','norm','string','rebuild','fontsize',9);
 set(hp,'position',[.01 .3 .3 .1],'callback',{@pbcheckupdatescall,5});
+set(hp,'tooltipstring',['..rebuild toolbox' char(10) ...
+    ' * USED WHEN: ' char(10) ...
+    '   - files are missing / not updated' char(10)' 
+    '   - ".git"-folder is lost ' ...
+    '      - duration: fast (secs) ']);
+
 
 hp=uicontrol('style','pushbutton','units','norm','string','fresh installation','fontsize',9);
 set(hp,'position',[.01 .2 .3 .1],'callback',{@pbcheckupdatescall,4},'foregroundcolor','r');
+set(hp,'tooltipstring',['..make FRESH INSTALLATION' char(10) ...
+    ' * USED WHEN: ' char(10) ...
+    '   - toolbox was never installed before' char(10)' 
+    '   - files are missing / not updated' char(10)' 
+    '   - ".git"-folder is lost '...
+       '      - duration: slow (mins) ']);
+
+
 
 hp=uicontrol('style','pushbutton','units','norm','string','Close','fontsize',9);
 set(hp,'position',[.01 .05 .2 .1],'callback',{@pbclose},'foregroundcolor','k');
