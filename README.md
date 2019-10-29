@@ -27,12 +27,12 @@ LINK: https://github.com/pstkoch/antx2
 - type installfromgithub to open the installer/check updates window
 - select [FRESH INSTALL] ...than select the hyperlink "install" ..wait..and hit [close] to close the window 
    
-  # start ant gui #
+  #### start ant gui ####
 - set MATLAB's current working dir to "antx2" dir 
 - type antlink to link paths
 - type ant to open ant-gui 
 
-  # check for updates #
+  #### check for updates ####
  - To check for updates select EXTRAS/CHECK FOR UPATES (GITHUB) from the ant main gui
 
 -----------------------------------------------
