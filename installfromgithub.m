@@ -267,7 +267,7 @@ if updatecode==4
         copyfile(fullfile(antupd.updatepath,'installfromgithub.m'), fullfile(antupd.patempup,'installfromgithub.m'),'f');
     end
     
-    disp([' Click hyperlink to install from GITHUB": <a href="matlab: cd(antupd.patempup);installfromgithub(''install'');">install</a>']);
+    disp([' Click hyperlink to install from GITHUB": <a href="matlab: cd(''' antupd.patempup ''');installfromgithub(''install'');">install</a>']);
     %     installfromgithub('install');
     
     
