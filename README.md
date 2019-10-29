@@ -27,13 +27,13 @@ LINK: https://github.com/pstkoch/antx2
 - type installfromgithub to open the installer/check updates window
 - select [FRESH INSTALL] ...than select the hyperlink "install" ..wait..and hit [close] to close the window 
    
-  ###  Atart Ant Gui  </ins> ###
+###  Start Ant Gui  </ins> ###
 - set MATLAB's current working dir to "antx2" dir 
 - type antlink to link paths
 - type ant to open ant-gui 
-  ### <ins> Check For Updates </ins> ###
+### <ins> Check For Updates </ins> ###
  - To check for updates select EXTRAS/CHECK FOR UPATES (GITHUB) from the ant main gui
-  ### <ins> Download Templates </ins> ###
+### <ins> Download Templates </ins> ###
  - donwload one/more templates (zip files) from LINK
    LINK: https://drive.google.com/drive/folders/1q5XOOVLvUYLqYsQJLqNRF7OK8fNwYhI9
    or from subfolder "anttemplates" from LINK:
