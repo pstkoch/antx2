@@ -68,7 +68,30 @@ global antupd;
 antupd=p;
 cd(p.updatepath);
 if ~isempty(p.antxpath); antlink(0);end
+end
 
+function pbclose(e,e2)
+
+global antupd;
+cd(antupd.updatepath);
+tmpfile=fullfile(antupd.updatepath,'temp_checkupdates.m');
+try; delete(tmpfile);
+    disp('.."temp_checkupdates.m" removed'); 
+catch
+    disp('..could not delete "temp_checkupdates.m", please do it manually later'); 
+end
+if ~isempty(antupd.antxpath); antlink(1);
+    disp('..set antx2-path again');
+    if ~isempty(findobj(0,'tag','ant'))
+        antcb('reload');
+        disp('..reopen antgui..reloading project'); 
+    end
+end
+rehash path;
+disp('..rehashed paths'); 
+cd(antupd.pwd);
+disp('..back to original directory'); 
+delete(findobj(gcf,'tag','fupd')); %close WINDOW
 end
 
 function pbcheckupdatescall(e,e2,updatecode)
@@ -256,12 +279,17 @@ set(hp,'position',[.01 .4 .3 .1],'callback',{@pbcheckupdatescall,2});
 
 
 hp=uicontrol('style','pushbutton','units','norm','string','rebuild','fontsize',9)
-set(hp,'position',[.01 .3 .3 .1],'callback',{@pbcheckupdatescall,3});
+set(hp,'position',[.01 .3 .3 .1],'callback',{@pbcheckupdatescall,5});
 
 hp=uicontrol('style','pushbutton','units','norm','string','fresh installation','fontsize',9)
 set(hp,'position',[.01 .2 .3 .1],'callback',{@pbcheckupdatescall,4},'foregroundcolor','r');
 
+hp=uicontrol('style','pushbutton','units','norm','string','Close','fontsize',9)
+set(hp,'position',[.01 .05 .2 .1],'callback',{@pbclose},'foregroundcolor','k');
+
 end
+
+
 
 function setstatus(arg,msg)
 if arg==0
