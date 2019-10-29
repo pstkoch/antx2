@@ -14,10 +14,10 @@ ANTX stands for **A** tlas **N** ormalization **T** oolbox using elasti **X**. I
 ## **Installation via GITHUB (ADVANTAGE: update option)**
 LINK: https://github.com/pstkoch/antx2
          
-- download & install GIT client --> https://git-scm.com/downloads
-    just follow instructions and keep the proposed properties when ask for
-- browse to LINK: https://github.com/pstkoch/antx2
-- select "installfromgithub.m" and click [RAW]-button 
+|- download & install GIT client --> https://git-scm.com/downloads
+|    just follow instructions and keep the proposed properties when ask for
+|- browse to LINK: https://github.com/pstkoch/antx2
+|- select "installfromgithub.m" and click [RAW]-button 
   or copyNpaste this link: https://raw.githubusercontent.com/pstkoch/antx2/master/installfromgithub.m
 - select "save as" (cmd+s or ctrl+s) and save file as "installfromgithub.m"
 - copy "installfromgithub.m" to the location where antx toolbox should be installed.
