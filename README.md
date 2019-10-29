@@ -6,22 +6,16 @@
 ANTX stands for **A** tlas **N** ormalization **T** oolbox using elasti **X**. It is a MATLAB toolbox for image registration of mouse magnetic resonance imaging data developed for research laboratories/departments.
 
 ## **Requirements**
-- Windows (*10), Linux (*Ubuntu 16.04.6 LTS, *MINT17), MAC (*OS X El Capital v10.11.6)
- * tested
-- MATLAB, version R2015b/16a were tested
+- Windows (tested: Windows 10)
+- Linux (tested: Ubuntu 16.04.6 LTS, MINT17)
+- MAC (tested: OS X El Capital v10.11.6)
+- MATLAB, version R2015b/16a were tested, versions above 2018b should work
 
-## **Installation**
-
-=============================================
-## Installation via GITHUB
-=============================================
-
+## **Installation via GITHUB**
 LINK: https://github.com/pstkoch/antx2
 
------------------------------------------------
-OPTION-A : Download using GIT client
+OPTION-A : Download using GIT client 
            ADVANTAGE: update option 
------------------------------------------------
 - download & install GIT client --> https://git-scm.com/downloads
   .. just follow instructions and keep the proposed properties when ask for
 - browse to LINK: https://github.com/pstkoch/antx2
