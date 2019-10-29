@@ -32,7 +32,7 @@ LINK: https://github.com/pstkoch/antx2
 - type antlink to link paths
 - type ant to open ant-gui 
 
-  --#### check for updates ####--
+  __ check for updates __
  - To check for updates select EXTRAS/CHECK FOR UPATES (GITHUB) from the ant main gui
 
 -----------------------------------------------
