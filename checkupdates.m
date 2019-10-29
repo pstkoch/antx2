@@ -47,18 +47,23 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
     cd(antupd.patempup); drawnow;
     pause(1);
     
-    
-    try
-        Editor = com.mathworks.mlservices.MLEditorServices;
-        Editor.getEditorApplication.closeNoPrompt;
+    if 0
+        try
+            Editor = com.mathworks.mlservices.MLEditorServices;
+            Editor.getEditorApplication.closeNoPrompt;
+        end
+        
+        disp(fullfile(antupd.patempup,'antx2'));
+        disp(fullfile(antupd.patempup,'_antx2'));
+        try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
+        try; disp(pwd);    end
+        drawnow;
+        disp('..cloning repository from GITHUB..');
+        git clone https://github.com/pstkoch/antx2
+        fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
+        cd(fullfile(antupd.patempup,'antx2'));
     end
-    
-    disp(fullfile(antupd.patempup,'antx2'));
-    disp(fullfile(antupd.patempup,'_antx2'));
-    try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
-    try; disp(pwd);    end
-    drawnow;
-    
+
     
 %     try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
 %     try; disp(pwd);    end
@@ -73,10 +78,7 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
 %         movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
 %     end
 end
-disp('..cloning repository from GITHUB..');
-git clone https://github.com/pstkoch/antx2
-fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
-cd(fullfile(antupd.patempup,'antx2'));
+
 setstatus(0);
 checkupdates;
 
