@@ -221,7 +221,8 @@ if updatecode==4
     copyfile(fullfile(antupd.updatepath,'checkupdates.m'), fullfile(antupd.patempup,'checkupdates.m'),'f');
     end    
     
-    checkupdates('install');
+    disp([' image: <a href="matlab: cd(antupd.patempup);checkupdates(''install'');">install</a>']);
+%     checkupdates('install');
     
         
 %     F:\github\fromGITHUB\antx2
