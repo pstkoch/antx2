@@ -4,18 +4,18 @@ function checkupdates(varargin)
 
 if nargin==1
     if strcmp(varargin{1},'install')
-         intaller
+        intaller
         return
     end
 elseif nargin==0
-    clear all antupd
+    clear global antupd
 end
 
 if strcmp(mfilename,'checkupdates')
-   try
-    copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f');
-  %try; delete(which('checkupdates.m')); end
-  end  
+    try
+        copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f');
+        %try; delete(which('checkupdates.m')); end
+    end
     temp_checkupdates
     return
 end
@@ -71,36 +71,36 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
             try; delete(fullfile(antupd.patempup,'checkupdates.m'));   end
         end
     end
-
     
-%     try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
-%     try; disp(pwd);    end
-%     drawnow
-%      try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
-%     try; disp(pwd);    end
     
-%     try
-%     movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
-%     catch
-%       cd('..');
-%         movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
-%     end
-
+    %     try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
+    %     try; disp(pwd);    end
+    %     drawnow
+    %      try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
+    %     try; disp(pwd);    end
+    
+    %     try
+    %     movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
+    %     catch
+    %       cd('..');
+    %         movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
+    %     end
+    
 else % no antx2-dir here
-    if 0  
+    if 0
         disp('..cloning repository from GITHUB..');
         git clone https://github.com/pstkoch/antx2
-         fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
+        fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
     end
     if 1 temp
         mkdir(fullfile(antupd.patempup,'antx2'))
         copyfile(fullfile(antupd.patempup,'checkupdates.m'),fullfile(antupd.patempup,'antx2','checkupdates.m'),'f')
     end
     cd(fullfile(antupd.patempup,'antx2'));
-  
-    end
-
+    
 end
+
+
 
 setstatus(0);
 checkupdates;
@@ -126,27 +126,27 @@ global antupd;
 cd(antupd.updatepath);
 tmpfile=fullfile(antupd.updatepath,'temp_checkupdates.m');
 try; delete(tmpfile);
-    disp('.."temp_checkupdates.m" removed'); 
+    disp('.."temp_checkupdates.m" removed');
 catch
-    disp('..could not delete "temp_checkupdates.m", please do it manually later'); 
+    disp('..could not delete "temp_checkupdates.m", please do it manually later');
 end
 if ~isempty(antupd.antxpath); antlink(1);
     disp('..set antx2-path again');
     if ~isempty(findobj(0,'tag','ant'))
         antcb('reload');
-        disp('..reopen antgui..reloading project'); 
+        disp('..reopen antgui..reloading project');
     end
 end
 rehash path;
-disp('..rehashed paths'); 
+disp('..rehashed paths');
 cd(antupd.pwd);
-disp('..back to original directory'); 
+disp('..back to original directory');
 delete(findobj(gcf,'tag','fupd')); %close WINDOW
 
 if isfield(antupd,'patempup')
     if exist(fullfile(antupd.patempup,'checkupdates.m'))==2
         delete(fullfile(antupd.patempup,'checkupdates.m'));
-        disp('..removed temporary "checkupdates"-file from upper dir'); 
+        disp('..removed temporary "checkupdates"-file from upper dir');
     end
 end
 
@@ -175,7 +175,7 @@ end
 
 
 if updatecode==1 %check before
-   setstatus(1,'checking updates');
+    setstatus(1,'checking updates');
     git fetch
     git diff master origin/master
     %     git diff --compact-summary master origin/master
@@ -217,12 +217,12 @@ end
 if updatecode==3
     setstatus(1,'create ".git" & updating..');
     % need to initialize a new Git repository in your machine:
-     fprintf(['creating/restore ".git"..please wait..\n']);
+    fprintf(['creating/restore ".git"..please wait..\n']);
     git init
     %Add your remote repository (published on GitHub):
     git remote add origin https://github.com/pstkoch/antx2
     git pull origin master
-
+    
     %Or you can simply clone the existing remote repository as suggested in the above comments:
     %git clone https://your_repot_url
     fprintf(['..done t=%2.3f min\n'],toc(atime)/60);
@@ -241,7 +241,7 @@ end
 
 if updatecode==4
     
-     pa=uigetdir(pwd,'select path to install "antx2"');
+    pa=uigetdir(pwd,'select path to install "antx2"');
     if isnumeric(pa);        return ;    end
     
     [pa2 pa1]=fileparts(pa);
@@ -255,46 +255,46 @@ if updatecode==4
     antupd.patempup=patempup;
     cd(patempup);
     try
-    copyfile(fullfile(antupd.updatepath,'checkupdates.m'), fullfile(antupd.patempup,'checkupdates.m'),'f');
-    end    
+        copyfile(fullfile(antupd.updatepath,'checkupdates.m'), fullfile(antupd.patempup,'checkupdates.m'),'f');
+    end
     
     disp([' Click hyperlink to install from GITHUB": <a href="matlab: cd(antupd.patempup);checkupdates(''install'');">install</a>']);
-%     checkupdates('install');
+    %     checkupdates('install');
     
-        
-%     F:\github\fromGITHUB\antx2
-%     F:\github\fromGITHUB
     
-
-%     setstatus(1,'installing..');
-
-%     [paup pamain]=fileparts(pa);
-%     if strcmp(pamain,'antx2') || exist((fullfile(pa,'antx2')))==7
-%         
-%         if exist((fullfile(pa,'antx2')))==7
-%             paup=pa;
-% %         elseif strcmp(pamain,'antx2') 
-% %             paup=   
-%         end
-%         
-%         
-%         cd(pa)
-%         rename()
-%     else
-%         git clone https://github.com/pstkoch/antx2
-%     end
+    %     F:\github\fromGITHUB\antx2
+    %     F:\github\fromGITHUB
     
-%     % need to initialize a new Git repository in your machine:
-%     cd(fileparts(antupd.updatepath));
-%     fprintf(['creating/restore ".git"..please wait..\n']);
-%     
-%     
-%     git init .
-%     git remote add origin https://github.com/pstkoch/antx2
-%     git pull origin master
-%     
-%     cd(antupd.updatepath);
-%     fprintf(['..done t=%2.3f min\n'],toc(atime)/60); 
+    
+    %     setstatus(1,'installing..');
+    
+    %     [paup pamain]=fileparts(pa);
+    %     if strcmp(pamain,'antx2') || exist((fullfile(pa,'antx2')))==7
+    %
+    %         if exist((fullfile(pa,'antx2')))==7
+    %             paup=pa;
+    % %         elseif strcmp(pamain,'antx2')
+    % %             paup=
+    %         end
+    %
+    %
+    %         cd(pa)
+    %         rename()
+    %     else
+    %         git clone https://github.com/pstkoch/antx2
+    %     end
+    
+    %     % need to initialize a new Git repository in your machine:
+    %     cd(fileparts(antupd.updatepath));
+    %     fprintf(['creating/restore ".git"..please wait..\n']);
+    %
+    %
+    %     git init .
+    %     git remote add origin https://github.com/pstkoch/antx2
+    %     git pull origin master
+    %
+    %     cd(antupd.updatepath);
+    %     fprintf(['..done t=%2.3f min\n'],toc(atime)/60);
 end
 
 
@@ -339,7 +339,7 @@ set(hp,'tooltipstring',['..checks for updates from repository only']);
 hp=uicontrol('style','pushbutton','units','norm','string','update without check','fontsize',9);
 set(hp,'position',[.01 .4 .3 .1],'callback',{@pbcheckupdatescall,2});
 set(hp,'tooltipstring',['..updates from repository without checking ' char(10) ...
-   '        [duration]: fast (secs) ']);
+    '        [duration]: fast (secs) ']);
 
 
 
@@ -374,9 +374,9 @@ end
 
 function setstatus(arg,msg)
 if arg==0
-   set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[.4 .4 .4],'string','status: idle');
+    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[.4 .4 .4],'string','status: idle');
 else
-    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[1 0 1],'string',['..busy ' msg]); 
+    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[1 0 1],'string',['..busy ' msg]);
 end
 
 drawnow
