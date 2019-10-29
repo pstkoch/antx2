@@ -12,7 +12,7 @@ end
 
 if strcmp(mfilename,'checkupdates')
    try
-    copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f')
+    copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f');
   %try; delete(which('checkupdates.m')); end
   end  
     temp_checkupdates
@@ -46,14 +46,14 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
     disp('renaming')
     disp(fullfile(antupd.patempup,'antx2'));
     disp(fullfile(antupd.patempup,'_antx2'));
-    movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f')
+    movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
 end
 disp('cloning')
 git clone https://github.com/pstkoch/antx2
 fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
 cd(fullfile(antupd.patempup,'antx2'));
 setstatus(0);
-checkupdates
+checkupdates;
 
 
 end
@@ -110,7 +110,7 @@ atime=tic;
 
 if exist('.git','dir')~=7
     disp('version control (".git") folder has been removed previously');
-    disp('set [keepVersionControl] to true and re-clone repository')
+    disp('set [keepVersionControl] to true and re-clone repository');
 end
 
 
@@ -120,7 +120,7 @@ if updatecode==1 %check before
     git fetch
     git diff master origin/master
     %     git diff --compact-summary master origin/master
-    [msg st]=git('diff --compact-summary master origin/master')
+    [msg st]=git('diff --compact-summary master origin/master');
     if isempty(msg);
         disp('no changes/no updates');
     else
@@ -196,7 +196,7 @@ if updatecode==4
     antupd.patempup=patempup;
     cd(patempup);
     try
-    copyfile(fullfile(antupd.updatepath,'checkupdates.m'), fullfile(antupd.patempup,'checkupdates.m'),'f')
+    copyfile(fullfile(antupd.updatepath,'checkupdates.m'), fullfile(antupd.patempup,'checkupdates.m'),'f');
     end    
     
     checkupdates('install');
@@ -265,26 +265,27 @@ try;  delete(findobj(0,'tag','fupd')); end
 figure; set(gcf,'color','w','units','normalized','menubar','none',...
     'position',[0.3750    0.3544    0.2896    0.2289],'tag','fupd',...
     'name', [mfilename]);
+set(gcf,'CloseRequestFcn',{@pbclose});
 
-hp=uicontrol('style','text','units','norm','string','status: --','fontsize',9)
+hp=uicontrol('style','text','units','norm','string','status: --','fontsize',9);
 set(hp,'position',[.01 0.6 .4 .07],'tag','msg','foregroundcolor',[.4 .4 .4],'backgroundcolor',[1 1 1]);
 set(hp,'horizontalalignment','left');
 setstatus(0);
 
-hp=uicontrol('style','pushbutton','units','norm','string','check for updates','fontsize',9)
+hp=uicontrol('style','pushbutton','units','norm','string','check for updates','fontsize',9);
 set(hp,'position',[.01 .5 .3 .1],'callback',{@pbcheckupdatescall,1});
 
-hp=uicontrol('style','pushbutton','units','norm','string','update without check','fontsize',9)
+hp=uicontrol('style','pushbutton','units','norm','string','update without check','fontsize',9);
 set(hp,'position',[.01 .4 .3 .1],'callback',{@pbcheckupdatescall,2});
 
 
-hp=uicontrol('style','pushbutton','units','norm','string','rebuild','fontsize',9)
+hp=uicontrol('style','pushbutton','units','norm','string','rebuild','fontsize',9);
 set(hp,'position',[.01 .3 .3 .1],'callback',{@pbcheckupdatescall,5});
 
-hp=uicontrol('style','pushbutton','units','norm','string','fresh installation','fontsize',9)
+hp=uicontrol('style','pushbutton','units','norm','string','fresh installation','fontsize',9);
 set(hp,'position',[.01 .2 .3 .1],'callback',{@pbcheckupdatescall,4},'foregroundcolor','r');
 
-hp=uicontrol('style','pushbutton','units','norm','string','Close','fontsize',9)
+hp=uicontrol('style','pushbutton','units','norm','string','Close','fontsize',9);
 set(hp,'position',[.01 .05 .2 .1],'callback',{@pbclose},'foregroundcolor','k');
 
 end
