@@ -1780,7 +1780,7 @@ elseif strcmp(task,'contact')
         cprintf(col,['**********   CONTACT     ******************\n']);
         cprintf(col,['Dr. Philipp Boehm-Sturm  or\n']);
         cprintf(col,['Dr. Stefan Paul Koch\n']);
-        cprintf(col,['Charit� - University Medicine Berlin\n']);
+        cprintf(col,['Charite - University Medicine Berlin\n']);
         cprintf(col,['Campus Mitte\n']);
         cprintf(col,['Department of Experimental Neurology\n']);
         cprintf(col,['Center for Stroke Research Berlin (CSB)\n']);
