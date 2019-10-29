@@ -16,9 +16,9 @@ LINK: https://github.com/pstkoch/antx2
 
 OPTION-A : Download using GIT client 
            ADVANTAGE: update option 
-* download & install GIT client --> https://git-scm.com/downloads
+_ download & install GIT client --> https://git-scm.com/downloads
   .. just follow instructions and keep the proposed properties when ask for
-* browse to LINK: https://github.com/pstkoch/antx2
+_ browse to LINK: https://github.com/pstkoch/antx2
 - select "installfromgithub.m" and click [RAW]-button 
   or copyNpaste this link: https://raw.githubusercontent.com/pstkoch/antx2/master/installfromgithub.m
 - select "save as" (cmd+s or ctrl+s) and save file as "installfromgithub.m"
