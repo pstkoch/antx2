@@ -34,8 +34,8 @@ LINK: https://github.com/pstkoch/antx2
 ### <ins> Check For Updates </ins> ###
  - To check for updates select EXTRAS/CHECK FOR UPATES (GITHUB) from the ant main gui
 ### <ins> Download Templates </ins> ###
- - donwload one/more templates (zip files) from LINK
-   LINK: https://drive.google.com/drive/folders/1q5XOOVLvUYLqYsQJLqNRF7OK8fNwYhI9
+ - donwload one/more templates (zip files) from LINK: 
+   https://drive.google.com/drive/folders/1q5XOOVLvUYLqYsQJLqNRF7OK8fNwYhI9
    or from subfolder "anttemplates" from LINK:
    https://drive.google.com/drive/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM 
  - unzip downloaded template file
