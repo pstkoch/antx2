@@ -71,6 +71,7 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
         if exist(fullfile(antupd.patempup,'checkupdates.m'))
             disp('..deleting "checkupdates.m" from upper directory ');
             try; delete(fullfile(antupd.patempup,'checkupdates.m'));   end
+            try; delete(fullfile(antupd.patempup,'temp_checkupdates.m'));   end  
         end
     end
     
@@ -106,7 +107,8 @@ else % no antx2-dir here
             try; delete(fullfile(antupd.patempup,'checkupdates.m'));   end
         end
     end
-    
+    try; delete(fullfile(antupd.patempup,'temp_checkupdates.m'));   end  
+     try; delete(antupd.tempfile);   end  
     
 end
 
