@@ -145,14 +145,6 @@ if updatecode==3
     %git clone https://your_repot_url
     fprintf(['..done t=%2.3f min\n'],toc(atime)/60);
 end
-if updatecode==5 %hard reset
-    setstatus(1,'hard reset..');
-    fprintf(['hard reset,updating..please wait..\n']);
-    %if exist(fullfile(pwd,'.git'))~=7
-    git reset --hard HEAD;
-    fprintf(['updating..done t=%2.3f min\n'],toc(atime)/60);
-end
-
 if updatecode==4
     
      pa=uigetdir(pwd,'select path to install "antx2"');
@@ -250,12 +242,8 @@ set(hp,'position',[.01 .5 .3 .1],'callback',{@pbcheckupdatescall,1});
 hp=uicontrol('style','pushbutton','units','norm','string','update without check','fontsize',9)
 set(hp,'position',[.01 .4 .3 .1],'callback',{@pbcheckupdatescall,2});
 
-
-hp=uicontrol('style','pushbutton','units','norm','string','rebuild','fontsize',9)
-set(hp,'position',[.01 .3 .3 .1],'callback',{@pbcheckupdatescall,3});
-
 hp=uicontrol('style','pushbutton','units','norm','string','fresh installation','fontsize',9)
-set(hp,'position',[.01 .2 .3 .1],'callback',{@pbcheckupdatescall,4},'foregroundcolor','r');
+set(hp,'position',[.01 .3 .3 .1],'callback',{@pbcheckupdatescall,4},'foregroundcolor','r');
 
 end
 
