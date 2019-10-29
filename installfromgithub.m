@@ -188,7 +188,7 @@ if updatecode==1 %check before
     [msg st]=git('diff --compact-summary master origin/master');
     if isempty(msg);
         disp('no changes/no updates');
-         setstatus(1,'no updates found');
+         setstatus(2,'no updates found');
          return
     else
         button = questdlg(['updates where found' char(10) 'Update toolbox now? '],'',...
@@ -387,11 +387,12 @@ end
 
 function setstatus(arg,msg)
 if arg==0
-    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[.4 .4 .4],'string','status: idle');
-else
-    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[1 0 1],'string',['..busy ' msg]);
+    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[.4 .4 .4],'string','[idle] ');
+elseif arg==1
+    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[1 0 1],'string',['[busy] ' msg]);
+elseif arg==2
+    set(findobj( findobj(0,'tag','fupd') ,'tag','msg'),'foregroundcolor',[ 0.4667    0.6745    0.1882],'string',['[idle] ' msg]);
 end
-
 drawnow
 end
 
