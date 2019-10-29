@@ -1,9 +1,56 @@
-#28-Oct-2019 14:12:21 RandNUmber: 1016
-#28-Oct-2019 14:12:21 RandNUmber: 906
-#28-Oct-2019 14:12:00 RandNUmber: 815
-#28-Oct-2019 10:33:47 RandNUmber: 278
 
-Installation:
+
+
+
+
+=============================================
+Installation via GITHUB
+=============================================
+
+LINK: https://github.com/pstkoch/antx2
+
+-----------------------------------------------
+OPTION-A : Download using GIT client
+           ADVANTAGE: update option 
+-----------------------------------------------
+- download & install GIT client --> https://git-scm.com/downloads
+  .. just follow instructions and keep the proposed properties when ask for
+- browse to LINK: https://github.com/pstkoch/antx2
+- select "installfromgithub.m" and click [RAW]-button 
+  or copyNpaste this link: https://raw.githubusercontent.com/pstkoch/antx2/master/installfromgithub.m
+- select "save as" (cmd+s or ctrl+s) and save file as "installfromgithub.m"
+- copy "installfromgithub.m" to the location where antx toolbox should be installed.
+  ..please don't create a folder with name "antx2", this folder will be created later on
+- set MATLAB's current working dir to the location of "installfromgithub.m" 
+- type installfromgithub to open the installer/check updates window
+- select [FRESH INSTALL] ...than select the hyperlink "install" ..wait..and hit [close] to close the window 
+   
+  *** start ant gui ***
+- set MATLAB's current working dir to "antx2" dir 
+- type antlink to link paths
+- type ant to open ant-gui 
+
+  *** check for updates ***
+ - To check for updates select EXTRAS/CHECK FOR UPATES (GITHUB) from the ant main gui
+
+-----------------------------------------------
+OPTION-B : just download no update option 
+           ADVANTAGE: more simple installation
+-----------------------------------------------
+- select [Clone & download button]
+- select [Download ZIP]
+- unzip folder & copy entire "antx2"-folder to desired location
+
+  *** start ant gui ***
+- set MATLAB's current working dir to "antx2" dir 
+- type antlink to link paths
+- type ant to open ant-gui  
+
+
+=============================================
+Installation via googledrive (older versions):
+=============================================
+LINK: https://drive.google.com/drive/u/1/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM
 -	download and unzip the ANTX2-toolbox
 -	save the toolbox to your preferred drive/path
 -	open Matlab, in Matlab set current path to the location of ANTX-Toolbox

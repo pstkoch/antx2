@@ -34,8 +34,16 @@
 % function modifications: uhelp, plog
 % #ra 17 Oct 2019 (22:04:14)
 % [xregisterCT/CTgetbrain_approach2]: added parameter "bonebrainvolume" for more robust cluster-identifaction
-% #ra 20 Oct 2019 (22:04:14)
-  %TEST
+% #ra 29 Oct 2019 (23:28:16)
+%   starting GITHUB REPO : https://github.com/pstkoch/antx2
+%  modif. files [cfg_getfile2], [uhelp]
+% 
+%
+%
+%
+%
+%
+%
 
 
 function antver()
@@ -47,7 +55,7 @@ lastchange=r{ichanges(end)};
 lastchange=regexprep(lastchange,{'#\w+ ', ').*'},{'',')'});
 r=[r(1:3); {[' last modification: ' lastchange ]}  ;  r(4:end)];
 uhelp(r,0, 'cursor' ,'end');
-
+set(gcf,'NumberTitle','off', 'name', 'ANTx2 - VERSION');
 % uhelp('antver.m');
 
 

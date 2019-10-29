@@ -117,7 +117,6 @@
 %---------------------------------------------
 % For more information, see <a href="matlab: 
 % web('http://www.mathworks.com')">the MathWorks Web site</a>.
-% rev: datestr(now) - copy selection bug
 
 
 function varargout=uhelp(fun,varargin)
@@ -838,13 +837,12 @@ elseif mode==3
 elseif mode==4 || mode==5%[4] copy selection or [5]evaluate selection
     
     tx= findobj(gcf,'tag','txt');
-    if strcmp(get(tx,'style'),'edit') 
+    if strcmp(get(tx,'style'),'edit')
       
             jhEdit = findjobj(tx);
             r = jhEdit.getComponent(0).getComponent(0);
             txt=char(r.getText);
-            %txt2copy=txt(r.getSelectionStart+1:r.getSelectionEnd);
-            txt2copy=get(r,'SelectedText');
+            txt2copy=txt(r.getSelectionStart+1:r.getSelectionEnd);
         if mode==4
             clipboard('copy',txt2copy);
             return
@@ -1001,8 +999,8 @@ elseif mode==20 %SWITCH DO EDIT MODE
           
         r = jhEdit.getComponent(0).getComponent(0);
         r.setWrapping(0);
-        set(r,'Editable',1) ;
-        set(r,'MouseMovedCallback',@caretmoved)
+        set(r,'Editable',0) ;
+    set(r,'MouseMovedCallback',@caretmoved)
         txt=char(r.getText);
         ichar=[1 regexpi(txt,char(10))];
         if cartline==1
@@ -1187,10 +1185,7 @@ function caretmoved(e,e2)
 % 'blub'
 txtline([],[]);
 
-function id=regexpi2(cells, str,varargin)
-%same as regexpi but jelds indizes of mathing cells , instead of empty cells ('I'm tired to code this again and again)
-id=regexpi(cells,str,varargin{:});
-id=find(cellfun('isempty',id)==0);
+
 
 % #############################################################
 %----------------------------------
