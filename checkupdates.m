@@ -7,7 +7,8 @@ if nargin==1
          intaller
         return
     end
-    
+elseif nargin==0
+    clear all antupd
 end
 
 if strcmp(mfilename,'checkupdates')
@@ -84,6 +85,21 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
 %       cd('..');
 %         movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
 %     end
+
+else % no antx2-dir here
+    if 0  
+        disp('..cloning repository from GITHUB..');
+        git clone https://github.com/pstkoch/antx2
+         fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
+    end
+    if 1 temp
+        mkdir(fullfile(antupd.patempup,'antx2'))
+        copyfile(fullfile(antupd.patempup,'checkupdates.m'),fullfile(antupd.patempup,'antx2','checkupdates.m'),'f')
+    end
+    cd(fullfile(antupd.patempup,'antx2'));
+  
+    end
+
 end
 
 setstatus(0);
