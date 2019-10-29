@@ -4,6 +4,7 @@ function checkupdates(varargin)
 
 if nargin==1
     if strcmp(varargin{1},'install')
+        
         intaller
         return
     end
@@ -14,8 +15,8 @@ end
 if strcmp(mfilename,'checkupdates')
     try
         copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f');
-        global antupd;
-        antupd.tempfile=fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m');
+%         global antupd;
+%         antupd.tempfile=fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m');
         %try; delete(which('checkupdates.m')); end
     end
     temp_checkupdates
@@ -50,7 +51,7 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
     cd(antupd.patempup); drawnow;
     pause(1);
     
-    if 0
+    if 1
         try
             Editor = com.mathworks.mlservices.MLEditorServices;
             Editor.getEditorApplication.closeNoPrompt;
@@ -90,12 +91,12 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
     %     end
     
 else % no antx2-dir here
-    if 0
+    if 1
         disp('..cloning repository from GITHUB..');
         git clone https://github.com/pstkoch/antx2
         fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
     end
-    if 1 
+    if 0 
         mkdir(fullfile(antupd.patempup,'antx2'))
         copyfile(fullfile(antupd.patempup,'checkupdates.m'),fullfile(antupd.patempup,'antx2','checkupdates.m'),'f')
     end
@@ -255,6 +256,10 @@ if updatecode==5 %hard reset
 end
 
 if updatecode==4
+    
+     global antupd;
+     antupd.tempfile=which('temp_checkupdates.m');%fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m');
+        
     
     pa=uigetdir(pwd,'select path to install "antx2"');
     if isnumeric(pa);        return ;    end
