@@ -43,7 +43,15 @@ disp('hallo');
 disp(which('checkupdates.m'));
 
 if exist(fullfile(antupd.patempup,'antx2'))==7
-    disp('renaming')
+    disp('renaming');
+    cd(antupd.patempup); drawnow;
+    pause(2);
+    
+    try
+        Editor = com.mathworks.mlservices.MLEditorServices;
+        Editor.getEditorApplication.closeNoPrompt;
+    end
+    
     disp(fullfile(antupd.patempup,'antx2'));
     disp(fullfile(antupd.patempup,'_antx2'));
     movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
