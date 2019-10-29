@@ -92,11 +92,19 @@ else % no antx2-dir here
         git clone https://github.com/pstkoch/antx2
         fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
     end
-    if 1 temp
+    if 1 
         mkdir(fullfile(antupd.patempup,'antx2'))
         copyfile(fullfile(antupd.patempup,'checkupdates.m'),fullfile(antupd.patempup,'antx2','checkupdates.m'),'f')
     end
     cd(fullfile(antupd.patempup,'antx2'));
+    
+    if isfield(antupd, 'patempup')
+        if exist(fullfile(antupd.patempup,'checkupdates.m'))
+            disp('..deleting "checkupdates.m" from upper directory ');
+            try; delete(fullfile(antupd.patempup,'checkupdates.m'));   end
+        end
+    end
+    
     
 end
 
