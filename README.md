@@ -11,12 +11,13 @@ ANTX stands for **A** tlas **N** ormalization **T** oolbox using elasti **X**. I
 - MAC (tested: OS X El Capital v10.11.6)
 - MATLAB, version R2015b/16a were tested, versions above 2018b should work
 
-## **Installation via GITHUB (ADVANTAGE: update option)**
+## [OPTION-A] Installation via GITHUB with GIT
+ADVANTAGE: update feature
 LINK: https://github.com/pstkoch/antx2
          
 - download & install GIT client --> https://git-scm.com/downloads
     just follow instructions and keep the proposed properties when ask for
-       - browse to LINK: https://github.com/pstkoch/antx2
+- browse to LINK: https://github.com/pstkoch/antx2
 - select "installfromgithub.m" and click [RAW]-button 
   or copyNpaste this link: https://raw.githubusercontent.com/pstkoch/antx2/master/installfromgithub.m
 - select "save as" (cmd+s or ctrl+s) and save file as "installfromgithub.m"
