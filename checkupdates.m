@@ -54,7 +54,14 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
     
     disp(fullfile(antupd.patempup,'antx2'));
     disp(fullfile(antupd.patempup,'_antx2'));
-    rmdir(fullfile(antupd.patempup,'antx2'),'s');
+    try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
+    try; disp(pwd);    end
+    drawnow
+    try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
+    try; disp(pwd);    end
+    drawnow
+     try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
+    try; disp(pwd);    end
     
 %     try
 %     movefile(fullfile(antupd.patempup,'antx2'),fullfile(antupd.patempup,'_antx2'),'f');
