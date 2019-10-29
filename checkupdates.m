@@ -63,6 +63,13 @@ if exist(fullfile(antupd.patempup,'antx2'))==7
         fprintf(['installation..done t=%2.3f min\n'],toc(atime)/60);
         cd(fullfile(antupd.patempup,'antx2'));
     end
+    
+    if isfield(antupd, 'patempup')
+        if exist(fullfile(antupd.patempup,'checkupdates.m'))
+            disp('..deleting "checkupdates.m" from upper directory ');
+            try; delete(fullfile(antupd.patempup,'checkupdates.m'));   end
+        end
+    end
 
     
 %     try;     rmdir(fullfile(antupd.patempup,'antx2'),'s'); end
