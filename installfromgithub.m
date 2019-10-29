@@ -235,7 +235,7 @@ if updatecode==5 %hard reset
     setstatus(1,'hard reset..');
     fprintf(['hard reset,updating..please wait..\n']);
     %if exist(fullfile(pwd,'.git'))~=7
-    git clean -df
+    %git clean -df
     git reset --hard HEAD;
     git init
     %Add your remote repository (published on GitHub):
