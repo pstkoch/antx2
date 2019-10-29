@@ -188,6 +188,7 @@ if updatecode==1 %check before
     [msg st]=git('diff --compact-summary master origin/master');
     if isempty(msg);
         disp('no changes/no updates');
+         setstatus(1,'no updates found');
     else
         button = questdlg(['updates where found' char(10) 'Update toolbox now? '],'',...
             'YES, update now','Cancel','canel');
