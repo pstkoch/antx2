@@ -14,6 +14,8 @@ end
 if strcmp(mfilename,'checkupdates')
     try
         copyfile(which('checkupdates.m'), fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m'),'f');
+        global antupd;
+        antupd.tempfile=fullfile(fileparts(which('checkupdates.m')),'temp_checkupdates.m');
         %try; delete(which('checkupdates.m')); end
     end
     temp_checkupdates
@@ -155,9 +157,12 @@ if isfield(antupd,'patempup')
     if exist(fullfile(antupd.patempup,'checkupdates.m'))==2
         delete(fullfile(antupd.patempup,'checkupdates.m'));
         disp('..removed temporary "checkupdates"-file from upper dir');
+        
+        try; delete(fullfile(antupd.patempup,'temp_checkupdates.m'));   end  
+        
     end
 end
-
+try; delete(fullfile(antupd.tempfile));   end
 
 end
 
