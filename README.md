@@ -1,9 +1,9 @@
 
 
 
-# ANTX
+# ANTx2
 
-ANTX2 stands for **A** tlas **N** ormalization **T** oolbox using elasti **X**. It is a MATLAB toolbox for image registration of mouse magnetic resonance imaging data developed for research laboratories/departments.
+ANTx2 stands for **A** tlas **N** ormalization **T** oolbox using elasti **x**. It is a MATLAB toolbox for image registration of mouse magnetic resonance imaging data developed for research laboratories/departments.
 
 ## **Requirements**
 - Windows (tested: Windows 10)
