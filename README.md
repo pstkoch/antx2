@@ -42,7 +42,7 @@ LINK: https://github.com/pstkoch/antx2
  - create folder "anttemplates" located at the same hierarchical level as antx2-folder is located
    ..this is easier to obtain the respective template 
 - copy unzipped template folder to "anttemplates" dir
-
+____________________________________________________________________________________________
 ## [OPTION-B] just download via clone-button (GITHUB)
 ADVANTAGE     : more simple installation
 DISADVANTAGE: no update feature
@@ -52,7 +52,7 @@ DISADVANTAGE: no update feature
 
 ### <ins> IMPORTANT </ins> ###
 for how to "Start Ant Gui" and "Download Templates" see above...
-_______________________
+____________________________________________________________________________________________
 ## [OPTION-C] Installation via googledrive
 DISADVANTAGE: older versions & no update feature
 LINK: https://drive.google.com/drive/u/1/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM
