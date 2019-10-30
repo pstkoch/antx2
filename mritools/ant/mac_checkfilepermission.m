@@ -1,5 +1,5 @@
 
-% MAC-only check and change file permission of elastix, transformix, MRIcroGL files
+% MAC-only: check and change file permission of elastix, transformix, MRIcroGL files
 function mac_checkfilepermission
 
 if ~ismac; return; end
