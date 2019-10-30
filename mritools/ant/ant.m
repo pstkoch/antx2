@@ -836,7 +836,10 @@ mh2 = uimenu(mh,'Label','ant-settings',                                         
 mh2 = uimenu(mh,'Label','version',                                                      'Callback',{@menubarCB, 'version'},'separator','on');
 mh2 = uimenu(mh,'Label','contact',                                                      'Callback',{@menubarCB, 'contact'});
 
-mh2 = uimenu(mh,'Label','check for updates (Github)',                                    'Callback',{@menubarCB, 'checkUpdateGithub'});
+mh2 = uimenu(mh,'Label','visit ANTx2 REPOSITORY (GITHUB',                                  'Callback',{@menubarCB, 'visitGITHUB'},'separator','on');
+mh2 = uimenu(mh,'Label','get templates from googledrive',                                  'Callback',{@menubarCB, 'openGdrive'},'separator','off');
+
+mh2 = uimenu(mh,'Label','check for updates (Github)',                                    'Callback',{@menubarCB, 'checkUpdateGithub'},'separator','on');
 
 
 %========================================================
@@ -1793,7 +1796,37 @@ elseif strcmp(task,'contact')
         cprintf(col,['philipp.boehm-sturm@charite.de\n']);
         cprintf(col,['**********   CONTACT     ******************\n']);
     end
+  elseif strcmp(task,'visitGITHUB')
+    if showhelpOnly==1;   %% HELP-PARSER: we need the TARGET-FUNCTION here
+        hlpfun={' ..visit ANTx2 Repositiory (GITHUB)'};
+        return ;
+    end
+    github='https://github.com/pstkoch/antx2';
+    if isunix
+        system(['xdg-open ' github]);
+    elseif ispc
+        system(['start ' github]);
+    elseif ismac
+        system(['open ' github]);
+    end   
+ elseif strcmp(task,'openGdrive')
+    if showhelpOnly==1;   %% HELP-PARSER: we need the TARGET-FUNCTION here
+        hlpfun={' get templates from googledrive'};
+        hlpfun{end+1,1}=[' ..go to #b anttemplates folder: '];
+        hlpfun{end+1,1}=['  download one/more templates (zip files) '];
+        hlpfun{end+1,1}=['  create folder "anttemplates" located at the same hierarchical level as antx2-folder'];
+        hlpfun{end+1,1}=['  copy unzipped template folder to "anttemplates" dir'];
+        return ;
+    end
     
+    gdrive='https://drive.google.com/drive/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM';
+    if isunix
+        system(['xdg-open ' gdrive]);
+    elseif ispc
+        system(['start ' gdrive]);
+    elseif ismac
+        system(['open ' gdrive]);
+    end
 elseif strcmp(task,'checkUpdateGithub')
     if showhelpOnly==1;   %% HELP-PARSER: we need the TARGET-FUNCTION here
         hlpfun={' check for updates/changes in GITHUB repository'};
@@ -1804,8 +1837,7 @@ elseif strcmp(task,'checkUpdateGithub')
         hlpfun=[hlpfun; strsplit(help(which('installfromgithub.m')),char(10))'];
         return ;
     end
-    
-    installfromgithub
+    installfromgithub;
     
 end
 

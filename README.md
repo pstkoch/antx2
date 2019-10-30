@@ -3,7 +3,7 @@
 
 # ANTX
 
-ANTX stands for **A** tlas **N** ormalization **T** oolbox using elasti **X**. It is a MATLAB toolbox for image registration of mouse magnetic resonance imaging data developed for research laboratories/departments.
+ANTX2 stands for **A** tlas **N** ormalization **T** oolbox using elasti **X**. It is a MATLAB toolbox for image registration of mouse magnetic resonance imaging data developed for research laboratories/departments.
 
 ## **Requirements**
 - Windows (tested: Windows 10)
@@ -34,7 +34,7 @@ LINK: https://github.com/pstkoch/antx2
 ### <ins> Check For Updates </ins> ###
  - To check for updates select EXTRAS/CHECK FOR UPATES (GITHUB) from the ant main gui
 ### <ins> Download Templates </ins> ###
- - donwload one/more templates (zip files) from LINK: 
+ - download one/more templates (zip files) from LINK: 
    https://drive.google.com/drive/folders/1q5XOOVLvUYLqYsQJLqNRF7OK8fNwYhI9
    or from subfolder "anttemplates" from LINK:
    https://drive.google.com/drive/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM 
@@ -56,7 +56,7 @@ for how to "Start Ant Gui" and "Download Templates" see above...
 
 
 ## [OPTION-C] Installation via googledrive
-DIADVANTAGE: older versions
+DIASVANTAGE: older versions
 LINK: https://drive.google.com/drive/u/1/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM
 -	download and unzip the ANTX2-toolbox
 -	save the toolbox to your preferred drive/path
