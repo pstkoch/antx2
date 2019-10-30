@@ -333,14 +333,20 @@ end
 %=====================================
 %% CHECK ELASTIX INSTALLATION
 if isunix
-    [~,msg]=evalc('system(''elastix'')');
-    if msg~=0
-       warning on;
-       warning('..ELASTIX is not installed') ;
-       padinfo=fullfile(fileparts(which('ant.m')),'docs');
-       info  ='readme_LINUX.txt';
-       showinfo2('..for help please inspect ', fullfile(padinfo,info));
-       disp('..use "setup_elastixlinux" to install ELASTIX and MRICRON');
+    
+    if ismac
+        mac_checkfilepermission
+    else
+        
+        [~,msg]=evalc('system(''elastix'')');
+        if msg~=0
+            warning on;
+            warning('..ELASTIX is not installed') ;
+            padinfo=fullfile(fileparts(which('ant.m')),'docs');
+            info  ='readme_LINUX.txt';
+            showinfo2('..for help please inspect ', fullfile(padinfo,info));
+            disp('..use "setup_elastixlinux" to install ELASTIX and MRICRON');
+        end
     end
     
 
