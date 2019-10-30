@@ -1979,7 +1979,7 @@ try
     hl=hittest(gcf);
     if ~isempty(hl)
         try
-           if strcmp(get(hl,'style'),'listbox')
+           if strcmp(get(hl,'style'),'listbox') && strcmp(get(hl,'tag'),'lb3')
             return
            end
         end
