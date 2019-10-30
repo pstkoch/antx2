@@ -836,7 +836,7 @@ mh2 = uimenu(mh,'Label','ant-settings',                                         
 mh2 = uimenu(mh,'Label','version',                                                      'Callback',{@menubarCB, 'version'},'separator','on');
 mh2 = uimenu(mh,'Label','contact',                                                      'Callback',{@menubarCB, 'contact'});
 
-mh2 = uimenu(mh,'Label','visit ANTx2 REPOSITORY (GITHUB',                                  'Callback',{@menubarCB, 'visitGITHUB'},'separator','on');
+mh2 = uimenu(mh,'Label','visit ANTx2 repository (Github)',                                  'Callback',{@menubarCB, 'visitGITHUB'},'separator','on');
 mh2 = uimenu(mh,'Label','get templates from googledrive',                                  'Callback',{@menubarCB, 'openGdrive'},'separator','off');
 
 mh2 = uimenu(mh,'Label','check for updates (Github)',                                    'Callback',{@menubarCB, 'checkUpdateGithub'},'separator','on');
