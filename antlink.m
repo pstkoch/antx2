@@ -14,6 +14,8 @@ if arg==1 %addPath
     addpath(pa);
     addpath((fullfile(pa,'spm12')));
     spm('defaults', 'FMRI');
+   addpath((fullfile(pa,'spm12','matlabbatch')))
+
     cd(fullfile(pa,'mritools'));
     dtipath;
     cd(pa)
