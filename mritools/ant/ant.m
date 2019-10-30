@@ -190,11 +190,12 @@ vstring=strsplit(help('antver'),char(10))';
 idate=max(regexpi2(vstring,' \w\w\w 20\d\d (\d\d'));
 dateLU=['ANTx2  vers.' char(regexprep(vstring(idate), {' (.*'  '  #\w\w ' },{''}))];
 
-h = uicontrol('style','text','units','normalized','position',[.94 .65 .08 .05],'tag','radioshowHTMLprogress',...
+h = uicontrol('style','pushbutton','units','normalized','position',[.94 .65 .08 .05],'tag','txtversion',...
     'string',dateLU,'fontsize',5,'fontweight','normal',...
-    'tooltip',['date of last update' char(10) '..see menu Extras/version or type "antver"']);
+    'tooltip',['date of last update' char(10) '..click to see last updates "antver"']);
 % set(h,'position',[.2 .65 .08 .02],'fontsize',6,'backgroundcolor','w','foregroundcolor',[.7 .7 .7])  
-set(h,'position',[.5 .67 .2 .02],'fontsize',6,'backgroundcolor','w','foregroundcolor',[0.9294    0.6941    0.1255],'horizontalalignment','left');
+set(h,'position',[.5 .67 .25 .027],'fontsize',7,'backgroundcolor','w','foregroundcolor',[0.9294    0.6941    0.1255],...
+    'horizontalalignment','left','callback',{@callantver});
 %============================================
 
 
@@ -348,6 +349,8 @@ end
 %%============================================
 %============================================
 %============================================
+function callantver(e,e2)
+antver;
 
 function radioshowhelp(h,e)
 hradiohelp=findobj(findobj(0,'tag','ant'),'tag','radioshowhelp');
