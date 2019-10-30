@@ -12,7 +12,7 @@ paprev=pwd;
 if arg==1 %addPath
     pa=pwd;
     addpath(pa);
-    addpath((fullfile(pa,'spm12')))
+    addpath(genpath(fullfile(pa,'spm12')))
     cd(fullfile(pa,'mritools'));
     dtipath;
     cd(pa)
