@@ -183,14 +183,18 @@ end
 if updatecode==1 %check before
     setstatus(1,'checking updates');
     git fetch
-    git diff master origin/master
+    %git diff master origin/master
     %     git diff --compact-summary master origin/master
-    [msg st]=git('diff --compact-summary master origin/master');
+    %[msg st]=git('diff --compact-summary master origin/master');
+    [msg st]=git('diff --stat master origin/master');
+    
     if isempty(msg);
         disp('no changes/no updates');
          setstatus(2,'no updates found');
          return
     else
+        disp(['####### CHANGES #######']);
+        disp(msg);
         button = questdlg(['updates where found' char(10) 'Update toolbox now? '],'',...
             'YES, update now','Cancel','canel');
         if ~isempty(regexpi(button,'yes'))
