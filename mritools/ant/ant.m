@@ -1978,6 +1978,11 @@ function windbuttonmotion(e,e2)
 try
     hl=hittest(gcf);
     if ~isempty(hl)
+        try
+           if strcmp(get(hl,'style'),'listbox')
+            return
+           end
+        end
         robot = java.awt.Robot;
         robot.keyPress    (java.awt.event.KeyEvent.VK_ESCAPE);
         robot.keyRelease  (java.awt.event.KeyEvent.VK_ESCAPE);
