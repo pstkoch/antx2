@@ -12,7 +12,8 @@ paprev=pwd;
 if arg==1 %addPath
     pa=pwd;
     addpath(pa);
-    addpath(genpath(fullfile(pa,'spm12')))
+    addpath((fullfile(pa,'spm12')));
+    spm('defaults', 'FMRI');
     cd(fullfile(pa,'mritools'));
     dtipath;
     cd(pa)

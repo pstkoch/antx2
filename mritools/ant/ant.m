@@ -20,7 +20,7 @@
 %
 %
 %% #b this is the ANT-MAIN GUI
-% #g INPUT: -
+% #g INPUT: -e
 % #g OUTPUT: -
 % -----------------------------
 
