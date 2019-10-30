@@ -11,7 +11,7 @@ ANTx2 stands for **A** tlas **N** ormalization **T** oolbox using elasti **x**. 
 - MAC (tested: OS X El Capital v10.11.6)
 - MATLAB, version R2015b/16a were tested, versions above 2018b should work
 
-## [OPTION-A] Installation via GITHUB with GIT
+## [OPTION-A] Installation via GITHUB uisng GIT
 ADVANTAGE: update feature
 LINK: https://github.com/pstkoch/antx2
          
@@ -43,20 +43,18 @@ LINK: https://github.com/pstkoch/antx2
    ..this is easier to obtain the respective template 
 - copy unzipped template folder to "anttemplates" dir
 
-## [OPTION-B] just download via clone-button
-ADVANTAGE  : more simple installation
-DIADVANTAGE: n update feature
-
+## [OPTION-B] just download via clone-button (GITHUB)
+ADVANTAGE     : more simple installation
+DISADVANTAGE: no update feature
 - select [Clone & download button]
 - select [Download ZIP]
 - unzip folder & copy entire "antx2"-folder to desired location
 
 ### <ins> IMPORTANT </ins> ###
 for how to "Start Ant Gui" and "Download Templates" see above...
-
-
+_______________________
 ## [OPTION-C] Installation via googledrive
-DIASVANTAGE: older versions
+DISADVANTAGE: older versions & no update feature
 LINK: https://drive.google.com/drive/u/1/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM
 -	download and unzip the ANTX2-toolbox
 -	save the toolbox to your preferred drive/path
