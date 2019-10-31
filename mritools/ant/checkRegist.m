@@ -727,16 +727,21 @@ newax = copyobj(currAxes,newFig);
 set(gcf,'menubar','none');
 set(newax,'position',[0 0 1 .95]);
 
+if isunix
+    fmt='-dbitmap';
+else
+    fmt='-dmeta';
+end
 
 try
-    print(newFig,'-clipboard','-dmeta');
+    print(newFig,'-clipboard',fmt);
 catch
     try
         hgexport(newFig,'-clipboard');
         
     catch
         try
-            print(newFig,'-clipboard','-dmeta');
+            print(newFig,'-clipboard',fmt);
         catch
             
         end
