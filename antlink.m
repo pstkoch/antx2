@@ -1,5 +1,5 @@
 
-%% link ANT-TOOLBOX
+%% link ANTx2-TOOLBOX
 % antlink or antlink(1) to setpath of ANT-TBX
 % antlink(0) to remove path of ANT-TBX
 
