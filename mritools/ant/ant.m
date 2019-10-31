@@ -1911,9 +1911,14 @@ end
 
 function closefolders(h,e)
 % try; evalc('system(''TASKKILL /F /IM explorer.exe & explorer'')'); end;
-
+if ispc
 try; evalc('!TASKKILL /F /IM explorer.exe'); end
 try; evalc('!start explorer '); end
+elseif ismac
+    system('osascript -e ''tell application "Finder" to close windows''');
+else
+    ('linux: hav to be implmented');
+end
 
 
 function showHTMLsummary(e,e2)
