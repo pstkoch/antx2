@@ -186,7 +186,9 @@ if updatecode==1 %check before
     %git diff master origin/master
     %     git diff --compact-summary master origin/master
     %[msg st]=git('diff --compact-summary master origin/master');
-    [msg st]=git('diff --stat master origin/master');
+   % [msg st]=git('diff --stat master origin/master');
+    [msg st]=git(' diff --name-only master origin/master');
+%     git diff --name-only 
     
     if isempty(msg);
         disp('no changes/no updates');
