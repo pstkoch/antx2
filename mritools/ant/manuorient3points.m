@@ -1375,6 +1375,7 @@ if strcmp(arg,'check')
           disp('Cannot sisplay in MRICRON'); 
        end
     end
+    pause(1);% for MAC-MRICRON
    try; delete(g3);end
    
    disp(['   ROTATIONS:  ' regexprep(num2str(B(4:6)),'\s+',' ') ]);
