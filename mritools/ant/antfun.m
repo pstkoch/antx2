@@ -120,7 +120,9 @@ end
 
 if strcmp(task,  'deformELASTIX' )
     disp(  '..deform Files using Elastix' );
-    
+    if isempty(paths)
+       disp('..no cases selectd') ;
+    end
     paths=varargin{1};
     s= xdeformpop(   paths  ,[1],[nan],[4],[],struct('showgui',1));
     
