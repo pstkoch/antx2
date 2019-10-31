@@ -1811,12 +1811,13 @@ elseif strcmp(task,'contact')
         return ;
     end
     github='https://github.com/pstkoch/antx2';
-    if isunix
+    if ismac
+        system(['open ' github]);
+    elseif isunix
         system(['xdg-open ' github]);
     elseif ispc
         system(['start ' github]);
-    elseif ismac
-        system(['open ' github]);
+    
     end   
  elseif strcmp(task,'openGdrive')
     if showhelpOnly==1;   %% HELP-PARSER: we need the TARGET-FUNCTION here
@@ -1829,12 +1830,13 @@ elseif strcmp(task,'contact')
     end
     
     gdrive='https://drive.google.com/drive/folders/0B9o4cT_le3AhSFJRdUx3eXlyUWM';
-    if isunix
+    if ismac
+        system(['open ' gdrive]);
+    elseif isunix
         system(['xdg-open ' gdrive]);
     elseif ispc
         system(['start ' gdrive]);
-    elseif ismac
-        system(['open ' gdrive]);
+        
     end
 elseif strcmp(task,'checkUpdateGithub')
     if showhelpOnly==1;   %% HELP-PARSER: we need the TARGET-FUNCTION here
