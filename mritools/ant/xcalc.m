@@ -27,12 +27,20 @@
 %      [3] ACROSS MOUSE FOLDERS:  
 %          use  #r "@m"  
 %          example: "mean(@m,4)"    : average 3d-input image across all mousefolders (average is done along 4th dimension, which is the mouse-id)
-% #b outName
-%          -specify the output file name --> 2 options:
-%          [1]  output name is  [prefix+input Name]: in this case type '@XXX', where 'XXX' is than the prefix 
-%               example:    '@mean'   --> adds the prefix 'mean' to the input image Name
-%          [2a] outputname is a string  (no file extension needed), (example:  'myMean.nii')
-%          [2b] outputname is a cell with names for each output file (only usefull when niftis contain more than one input file)
+% #b outName (filename outputformats)
+% #g file extension (".nii") allowed to add but not necessary
+% #g use "^" to indicate prefix/suffix or any substrings in combination with @i/@inum image placeholder
+% #g use "@i", "@inum", or "@m" for files as indicated above
+% FORMAT EXAMPLES____________________
+% 'mean'         just a new file name (identical to '^mean')
+% '^mean@i'      prefix "mean" added to 1st image name
+% '^mean@i1'     same as '^mean@i' 
+% '^mean@i2'     prefix "mean" added to 2nd image name
+% '@i1'          same output name as 1st image, THIS WILL OVERWRITE THE 1st IMAGE !!!!
+% '@i1^masked    suffix "masked" added to 1st image name
+% '^just@i1^_@i2^masked'   prefix("just")+Img1Name+substring("_")+Img2Name+suffix("masked")
+% '^mean@m'     "mean" added to 1st image name FOR ACROSS-MOUSE-DIRS-SCENARIO
+% 
 % #b outDir
 %        specify the output directory, 2 options:
 %         [1] 'local': type 'local' to save in the respective mouse folder (this is in "WITHIN MOUSE FOLDER OPERATIONS" the usual way)
@@ -285,7 +293,7 @@ disp(['xcalx-evalstr: '  estr ]);
 str=estr;
 
 
-
+% replacenames
 %———————————————————————————————————————————————
 %%   mod6
 %———————————————————————————————————————————————
@@ -314,15 +322,19 @@ if ~isempty(mod6)
         else
             outfi=z.outName{1};
         end
-        if ~isempty(strfind(outfi,'@')) %prefix
-            outfi=[regexprep(regexprep(outfi,'\@',''),'\s','') z.niftis{j} ];
-        end
-        outfi=[strrep(outfi,'.nii','') '.nii'];
+        %if ~isempty(strfind(outfi,'@')) %prefix
+        %    outfi=[regexprep(regexprep(outfi,'\@',''),'\s','') z.niftis{j} ];
+        %end
+        %outfi=[strrep(outfi,'.nii','') '.nii'];
+         outfi=replacenames(outfi,z); %replacePLACEHOLDERS BY NAMES 
+        
+        
         if strcmp(lower(z.outDir),'local')
             fiout=fullfile(pa{i}, outfi);
         else
             fiout=fullfile(z.outDir{1}, outfi);
         end
+        
         
         rsavenii(fiout, hv,v);
 %         disp(['xcalc result: <a href="matlab: explorerpreselect(''' ...
@@ -355,10 +367,11 @@ if ~isempty(mod5)
         else
             outfi=z.outName{1};
         end
-        if ~isempty(strfind(outfi,'@')) %prefix
-            outfi=[regexprep(regexprep(outfi,'\@',''),'\s','') z.niftis{j} ];
-        end
-        outfi=[strrep(outfi,'.nii','') '.nii'];
+        %if ~isempty(strfind(outfi,'@')) %prefix
+        %    outfi=[regexprep(regexprep(outfi,'\@',''),'\s','') z.niftis{j} ];
+        %end
+        %outfi=[strrep(outfi,'.nii','') '.nii'];
+        outfi=replacenames(outfi,z); %replacePLACEHOLDERS BY NAMES 
         if strcmp(lower(z.outDir),'local')
             fiout=fullfile(pa{i}, outfi);
         else
@@ -389,10 +402,10 @@ if ~isempty(mod1) && isempty(mod5)
             else
                 outfi=z.outName{1};
             end
-            if ~isempty(strfind(outfi,'@')) %prefix
-                outfi=[regexprep(regexprep(outfi,'\@',''),'\s','') z.niftis{j} ];
-            end
-            outfi=[strrep(outfi,'.nii','') '.nii'];
+            
+        outfi=replacenames(outfi,z); %replacePLACEHOLDERS BY NAMES 
+            
+            
             if strcmp(lower(z.outDir),'local')
                 fiout=fullfile(pa{i}, outfi);
             else
@@ -438,4 +451,80 @@ disp('not implemented yet');
 function he=selectfile(v,selectiontype)
 he=selector2(v.tb,v.tbh,...
     'out','col-1','selection',selectiontype);
+
+
+
+
+
+
+function outfi2=replacenames(outfi,z)
+
+%% filename outputformats
+% file extension (".nii") allowed to add but not necessary
+% #b use "^" to indicate prefix/suffix or any substrings in combination with @i/@inum image placeholder
+% #b use "@i", "@inum", or "@m" for files as indicated above
+% FORMAT EXAMPLES____________________
+% 'mean'         just a new file name (identical to '^mean')
+% '^mean@i'      prefix "mean" added to 1st image name
+% '^mean@i1'     same as '^mean@i' 
+% '^mean@i2'     prefix "mean" added to 2nd image name
+% '@i1'          warning same output name as 1st image, this will overwrite the 1st image !!!!
+% '@i1^masked    suffix "masked" added to 1st image name
+% '^just@i1^_@i2^masked'   prefix("just")+Img1Name+substring("_")+Img2Name+suffix("masked")
+% '^mean@m'     "mean" added to 1st image name FOR ACROSS-MOUSE-DIRS-SCENARIO
+
+%% tests
+%  outfi='mean'; % new name, identical to '^mean'
+% outfi='mean@i';
+%  outfi='^mean@i'; %prefix "mean" added to 1st image name
+% outfi='^mean@i1'; %same as above
+%  outfi='^mean@i2'; %prefix "mean" added to 2nd image name
+% outfi='@i1.nii'; % !warning same name as 1st image, this will overwrite the 1st image !!!!
+% outfi='@i1^masked'; %suffix "masked" added to 1st image name
+% outfi='^just@i1^_@i2^masked'; %prefix("just")+Img1Name+substring("_")+Img2Name+suffix("masked")
+% 
+% outfi='^mean@m'; %prefix "mean" added to 1st image name
+
+
+% outfi='^mean_@i.nii';
+% outfi='hiluulo.nii';
+% outfi='^mean';
+% outfi='@i^post'
+% outfi='^mean@i1@i2';
+% outfi='ww^mean@i1@i2^post.nii';
+splitt=regexp(outfi,'@|\^','split');
+if length(splitt)>1
+    % splitt=strsplit(outfi,'@')
+    for i3=1:length(splitt)
+        if strfind(splitt{i3},'^')
+            splitt{i3}= strrep(splitt{i3},'^','');
+        elseif strfind(splitt{i3},'i')
+            if length(splitt{i3})==1   % @i-image
+                [~,fidx]=fileparts(z.niftis{1});
+                splitt{i3}= fidx;
+            elseif ~isempty(regexpi(splitt{i3},'i\d{1}')) % @number-image
+                tokn=regexpi([splitt{i3}],'i\d*','match');
+                if ~isempty(tokn)
+                    ifilenum=str2num(char(strrep(tokn{1},'i','')));
+                    [~,fidx]=fileparts(z.niftis{ifilenum});
+                    splitt{i3}= fidx;
+                end
+            end
+          elseif strfind(splitt{i3},'m')
+            if length(splitt{i3})==1   % @m-image (across mouse dirs)
+                [~,fidx]=fileparts(z.niftis{1});
+                splitt{i3}= fidx;  
+            end
+        end
+    end
+else
+    splitt=cellstr(outfi);
+end
+outfi2=[regexprep(sprintf('%s' ,splitt{:}),{'.nii','\s+'},{''}) '.nii'];
+% disp(outfi2);
+
+
+
+
+
 
