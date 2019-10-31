@@ -122,7 +122,7 @@
 %                2nd input (z) struct with parameters see examples above
                 
 
-
+% rev: 31Oct2019_12-43-04 outputname: imageplaceholder+prefix/suffic
 
 
 function xcalc(showgui,x,pa)
