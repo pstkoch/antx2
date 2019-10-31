@@ -1352,7 +1352,8 @@ m2=spm_matrix(B);
 mx=[m2*m];
 % mx(1:3,4)=mx(1:3,4)+trans';
 
-g3=stradd(g2,[strrep(p.prefix,'','') ''],1);
+% g3=stradd(g2,[strrep(p.prefix,'','') ''],1); % landet im template-folder
+g3=stradd(g1,[strrep(p.prefix,'','') ''],1); % landet im g1-folder ("t2.nii"-dir)
 copyfile(g2,g3,'f');
 spm_get_space(g3,mx);
 [pa,name, ext]=fileparts(g3);
@@ -1367,7 +1368,12 @@ if strcmp(arg,'check')
     hp=findobj(hf,'tag','popcheck');
     if get(hp,'value')==2 || get(hp,'value')==3  %  p.showmatch==1
     %if p.showMricron==1
+       drawnow;
+       if exist(g3)==2
         rmricron([],g1,g3,1);
+       else
+          disp('Cannot sisplay in MRICRON'); 
+       end
     end
    try; delete(g3);end
    
